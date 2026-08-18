@@ -1,0 +1,24 @@
+<section class="moltendb-test">
+  <h2>MoltenDB test</h2>
+
+  <button type="button" (click)="addGreeting()">Add greeting</button>
+
+  @if (greetings.isLoading() && !greetings.value()) {
+    <p>Loading…</p>
+  }
+
+  @if (greetings.value(); as list) {
+    <ul>
+      @for (item of list; track item._key) {
+        <li>
+          {{ item.message }} ({{ item.createdAt }})
+          <button type="button" (click)="removeGreeting(item._key)">Remove</button>
+        </li>
+      }
+    </ul>
+  }
+
+  @if (greetings.error()) {
+    <p class="error">{{ greetings.error().message }}</p>
+  }
+</section>
