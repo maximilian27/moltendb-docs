@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'styles/colours';
+
 body {
-  background: #222;
+  background: var(--color-background);
+  color: var(--color-text);
   margin: 0;
 }

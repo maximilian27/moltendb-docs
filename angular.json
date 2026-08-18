@@ -27,6 +27,21 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "moltendb-worker.js",
+                "input": "node_modules/@moltendb-web/core/dist",
+                "output": "/"
+              },
+              {
+                "glob": "moltendb_core.js",
+                "input": "node_modules/@moltendb-web/core/dist/wasm",
+                "output": "/wasm/"
+              },
+              {
+                "glob": "*.wasm",
+                "input": "node_modules/@moltendb-web/core/dist/wasm",
+                "output": "/wasm/"
               }
             ],
             "styles": [
@@ -39,7 +54,7 @@
             },
             "ssr": {
               "entry": "src/server.ts",
-              "experimentalPlatform": "neutral"
+              "platform": "neutral"
             },
             "outputPath": "dist"
           },
