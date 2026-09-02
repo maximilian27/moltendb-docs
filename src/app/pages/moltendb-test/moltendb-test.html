@@ -3,7 +3,7 @@
 
   <button type="button" (click)="addGreeting()">Add greeting</button>
 
-  @if (greetings.isLoading() && !greetings.value()) {
+  @if (greetings.isLoading() && greetings.value()?.length === 0) {
     <p>Loading…</p>
   }
 
