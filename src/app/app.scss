@@ -1,0 +1,8 @@
+// Stretches the routed page to the bottom of the viewport (below the top
+// nav) so pages that opt into flex-growing, such as the book layout's
+// sidebar, can extend all the way down even when their content is short.
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

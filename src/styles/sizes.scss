@@ -1,0 +1,44 @@
+// Spacing, radius, and layout size variables for the application.
+//
+// Exposed as CSS custom properties (not plain SCSS variables) so they stay
+// consistent with the colour and typography tokens and can be reused by any
+// component-level stylesheet via `var(--token-name)`.
+
+// Breakpoint at which the sidebar switches from its mobile ("overlay")
+// behaviour to its desktop ("push") behaviour. Kept as a plain Sass variable
+// (rather than a CSS custom property) because `@media` conditions must be
+// resolved at compile time.
+$breakpoint-tablet: 860px;
+
+:root {
+  // Spacing scale
+  --space-3xs: 0.1rem;
+  --space-2xs: 0.15rem;
+  --space-xs: 0.4rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.75rem;
+  --space-lg: 1rem;
+  --space-xl: 1.25rem;
+  --space-2xl: 1.5rem;
+  --space-3xl: 2rem;
+  --space-4xl: 3rem;
+  --space-5xl: 4rem;
+
+  // Border radius scale
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  // Layout sizes
+  --content-width-sm: 760px;
+  --content-width-lg: 1080px;
+  --sidebar-width: 260px;
+  --card-min-width: 220px;
+  // Height of the sticky top navigation bar (desktop only, see
+  // `top-nav.scss`) — used to size the sidebar to exactly the remaining
+  // viewport height (`calc(100vh - var(--top-nav-height))`).
+  --top-nav-height: 4rem;
+
+  // Transitions
+  --transition-fast: 0.15s ease;
+}

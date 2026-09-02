@@ -1,7 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, afterNextRender, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { Sidebar } from '../sidebar/sidebar';
 import { Book, getBookById } from '../../nav-config';
+
+// Keep in sync with `$breakpoint-tablet` in `src/styles/sizes.scss`.
+const MOBILE_BREAKPOINT_QUERY = '(max-width: 859px)';
 
 @Component({
   selector: 'app-book-layout',
@@ -20,4 +23,26 @@ export class BookLayout {
     }
     return book;
   })();
+
+  protected readonly sidebarOpen = signal(true);
+
+  constructor() {
+    // The sidebar starts open on desktop (content push) but collapsed on
+    // mobile (overlay) so the docs aren't obscured on first load. `window`
+    // is only available in the browser, so this defers the check until
+    // after the first render instead of running during SSR/prerendering.
+    afterNextRender(() => {
+      if (window.matchMedia(MOBILE_BREAKPOINT_QUERY).matches) {
+        this.sidebarOpen.set(false);
+      }
+    });
+  }
+
+  protected toggleSidebar(): void {
+    this.sidebarOpen.update((open) => !open);
+  }
+
+  protected closeSidebar(): void {
+    this.sidebarOpen.set(false);
+  }
 }

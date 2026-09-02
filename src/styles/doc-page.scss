@@ -3,7 +3,7 @@
 // can stay free of repeated styling.
 
 .doc-page {
-  max-width: 760px;
+  max-width: var(--content-width-sm);
 }
 
 .doc-page h1 {
@@ -13,14 +13,15 @@
 
 .doc-page__lead {
   color: var(--color-text-secondary);
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
 }
 
 .doc-page code {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
-  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  padding: var(--space-3xs) var(--space-xs);
   font-size: 0.9em;
+  font-family: var(--font-family-mono);
 }

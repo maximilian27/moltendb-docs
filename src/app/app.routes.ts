@@ -26,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'moltendb-test',
     component: MoltendbTest
+  },
+  {
+    path: 'contact',
+    loadComponent: () => import('./pages/contact/contact').then((m) => m.Contact)
   }
 ];

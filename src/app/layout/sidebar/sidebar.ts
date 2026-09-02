@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Book } from '../../nav-config';
 
@@ -10,4 +10,6 @@ import { Book } from '../../nav-config';
 })
 export class Sidebar {
   readonly book = input.required<Book>();
+  readonly open = input<boolean>(true);
+  readonly closeRequested = output<void>();
 }

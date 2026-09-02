@@ -1,6 +1,18 @@
 <div class="book-layout">
-  <app-sidebar [book]="book" />
+  @if (sidebarOpen()) {
+    <div class="book-layout__backdrop" (click)="closeSidebar()"></div>
+  }
+  <app-sidebar [book]="book" [open]="sidebarOpen()" (closeRequested)="closeSidebar()" />
   <main class="book-layout__content">
+    <button
+      type="button"
+      class="book-layout__toggle"
+      [attr.aria-expanded]="sidebarOpen()"
+      aria-label="Toggle navigation menu"
+      (click)="toggleSidebar()"
+    >
+      <span aria-hidden="true">☰</span>
+    </button>
     <router-outlet />
   </main>
 </div>

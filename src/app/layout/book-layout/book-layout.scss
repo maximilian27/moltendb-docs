@@ -1,11 +1,58 @@
+@use '../../../styles/sizes' as sizes;
+
+:host {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
 .book-layout {
   display: flex;
   align-items: stretch;
+  flex: 1;
+  min-width: 0;
+  position: relative;
 }
 
 .book-layout__content {
   flex: 1;
   min-width: 0;
-  padding: 2rem;
+  padding: var(--space-3xl);
   box-sizing: border-box;
+}
+
+.book-layout__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: 0 0 var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+}
+
+.book-layout__backdrop {
+  display: none;
+}
+
+// Mobile: dim the content behind the sidebar while it's open as an
+// overlay, and let tapping it close the sidebar again.
+@media (max-width: (sizes.$breakpoint-tablet - 1)) {
+  .book-layout__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 20;
+  }
 }
