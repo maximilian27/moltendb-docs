@@ -1,0 +1,11 @@
+.book-layout {
+  display: flex;
+  align-items: stretch;
+}
+
+.book-layout__content {
+  flex: 1;
+  min-width: 0;
+  padding: 2rem;
+  box-sizing: border-box;
+}

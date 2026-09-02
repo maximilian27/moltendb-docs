@@ -1,0 +1,18 @@
+<aside class="sidebar">
+  <p class="sidebar__title">
+    <span aria-hidden="true">{{ book().icon }}</span>
+    {{ book().title }}
+  </p>
+
+  <nav class="sidebar__links" aria-label="{{ book().title }} navigation">
+    @for (link of book().links; track link.path) {
+      <a
+        class="sidebar__link"
+        [routerLink]="link.path"
+        routerLinkActive="sidebar__link--active"
+      >
+        {{ link.label }}
+      </a>
+    }
+  </nav>
+</aside>

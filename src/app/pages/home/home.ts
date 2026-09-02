@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { BOOKS } from '../../nav-config';
 
 @Component({
   selector: 'app-home',
@@ -8,5 +9,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.scss',
 })
 export class Home {
-  protected readonly title = signal('moltendb-docs');
+  protected readonly books = BOOKS;
 }

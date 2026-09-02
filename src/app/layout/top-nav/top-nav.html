@@ -1,0 +1,19 @@
+<header class="top-nav">
+  <a class="top-nav__brand" routerLink="/">
+    <span class="top-nav__brand-mark" aria-hidden="true">⚡</span>
+    <span class="top-nav__brand-name">MoltenDB</span>
+  </a>
+
+  <nav class="top-nav__links" aria-label="Documentation sections">
+    @for (book of books; track book.id) {
+      <a
+        class="top-nav__link"
+        [routerLink]="book.basePath"
+        routerLinkActive="top-nav__link--active"
+      >
+        <span class="top-nav__link-icon" aria-hidden="true">{{ book.icon }}</span>
+        {{ book.title }}
+      </a>
+    }
+  </nav>
+</header>

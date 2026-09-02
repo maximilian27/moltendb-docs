@@ -22,8 +22,8 @@ describe('Home', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it('should render the hero title', async () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, moltendb-docs');
+    expect(compiled.querySelector('h1')?.textContent).toContain('isomorphic');
   });
 });
