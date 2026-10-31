@@ -1,5 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'styles/colours';
+@use 'styles/typography';
+@use 'styles/sizes';
+@use 'styles/doc-page';
+
 body {
-  background: #222;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
   margin: 0;
 }

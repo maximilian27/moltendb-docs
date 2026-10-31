@@ -1,0 +1,64 @@
+@use '../../../styles/sizes' as sizes;
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+  padding: var(--space-md) var(--space-2xl);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+// Give the nav a known, fixed height on desktop so the sidebar can size
+// itself to exactly `calc(100vh - var(--top-nav-height))`. Left auto on
+// mobile so the links are still free to wrap onto a second line on narrow
+// screens without being clipped.
+@media (min-width: sizes.$breakpoint-tablet) {
+  .top-nav {
+    height: var(--top-nav-height);
+    box-sizing: border-box;
+  }
+}
+
+.top-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+}
+
+.top-nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.top-nav__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+
+  &:hover {
+    background: var(--color-background);
+    color: var(--color-text);
+  }
+}
+
+.top-nav__link--active {
+  background: var(--color-background);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}

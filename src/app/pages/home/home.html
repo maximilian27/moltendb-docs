@@ -1,0 +1,29 @@
+<section class="hero">
+  <p class="hero__eyebrow">MoltenDB</p>
+  <h1 class="hero__title">An ultra-fast, isomorphic, offline-first database.</h1>
+  <p class="hero__subtitle">
+    Written in Rust and compiled to WebAssembly, MoltenDB runs the exact same
+    engine on your server and inside your users' browsers — no separate
+    client-side cache, no separate query language, and no drift between the two.
+  </p>
+</section>
+
+<section class="isomorphic-pitch">
+  <h2>One engine, everywhere</h2>
+  <p>
+    Placeholder copy: the same Rust core that powers your backend compiles
+    straight to WASM, so the exact same storage engine, query planner, and
+    durability guarantees run server-side, inside a browser Web Worker backed
+    by OPFS, and even fully offline — all through one isomorphic API.
+  </p>
+</section>
+
+<section class="cta-cards">
+  @for (book of books; track book.id) {
+    <a class="cta-card" [routerLink]="book.basePath">
+      <span class="cta-card__icon" aria-hidden="true">{{ book.icon }}</span>
+      <h3 class="cta-card__title">{{ book.title }}</h3>
+      <p class="cta-card__audience">{{ book.audience }}</p>
+    </a>
+  }
+</section>

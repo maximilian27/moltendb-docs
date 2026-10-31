@@ -1,0 +1,27 @@
+// Shared layout for documentation content pages rendered inside the book
+// layout's <router-outlet>. Kept global so every placeholder page component
+// can stay free of repeated styling.
+
+.doc-page {
+  max-width: var(--content-width-sm);
+}
+
+.doc-page h1 {
+  margin-top: 0;
+  color: var(--color-text);
+}
+
+.doc-page__lead {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+}
+
+.doc-page code {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3xs) var(--space-xs);
+  font-size: 0.9em;
+  font-family: var(--font-family-mono);
+}

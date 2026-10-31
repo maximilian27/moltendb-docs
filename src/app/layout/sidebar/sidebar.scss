@@ -1,0 +1,124 @@
+@use '../../../styles/sizes' as sizes;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: var(--sidebar-width);
+  height: 100%;
+  flex-shrink: 0;
+  padding: var(--space-2xl) var(--space-lg);
+  border-right: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-sizing: border-box;
+  overflow-y: auto;
+  transition: width var(--transition-fast), transform var(--transition-fast);
+}
+
+.sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin: 0 0 var(--space-lg);
+  padding: 0 var(--space-md);
+}
+
+.sidebar__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.sidebar__close {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+  padding: var(--space-2xs);
+  border-radius: var(--radius-sm);
+
+  &:hover {
+    background: var(--color-background);
+    color: var(--color-text);
+  }
+}
+
+.sidebar__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.sidebar__link {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+
+  &:hover {
+    background: var(--color-background);
+    color: var(--color-text);
+  }
+}
+
+.sidebar__link--active {
+  background: var(--color-background);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.sidebar__footer {
+  margin-top: auto;
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+// Desktop: the sidebar sits inline in the flex row next to the content, so
+// toggling it closed simply shrinks it away and the content "pushes" into
+// the space it frees up. It's also pinned to the viewport height below the
+// (fixed-height) top nav — rather than stretching to match the height of
+// the routed page content — and scrolls its own links independently, like a
+// permanent drawer, while the page itself keeps scrolling normally.
+@media (min-width: sizes.$breakpoint-tablet) {
+  .sidebar {
+    position: sticky;
+    top: var(--top-nav-height);
+    height: calc(100vh - var(--top-nav-height));
+  }
+
+  .sidebar--closed {
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    border-right: none;
+    overflow: hidden;
+  }
+}
+
+// Mobile: the sidebar is taken out of the flow and slides in on top of the
+// content as an overlay instead of pushing it aside.
+@media (max-width: (sizes.$breakpoint-tablet - 1)) {
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 30;
+    transform: translateX(-100%);
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .sidebar--open {
+    transform: translateX(0);
+  }
+
+  .sidebar__close {
+    display: flex;
+  }
+}
